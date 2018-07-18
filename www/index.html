@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<!--
+       お天気予報アプリ JavaScript Version
+
+        参考サイト(bxslider)
+        https://bxslider.com/install/
+        http://cly7796.net/wp/javascript/plugin-jquery-bxslider/
+    -->
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+	<script src="components/loader.js"></script>
+	<link rel="stylesheet" href="components/loader.css">
+	<link rel="stylesheet" href="css/bxslider.css" media="all">
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="jquery.bxslider.js"></script>
+	<script src="jquery.xdomainajax2.js"></script>
+
+	<script>
+		$(document).ready(function(){
+                                        
+                //ちなみに「wc:JAXX0078」は、北海道地方の札幌です
+                //http://weather.service.msn.com/data.aspx?src=vista&weadegreetype=C&culture=ja-JP&wealocations=wc:JAXX0078
+                //var wcode = "wc:JAXX0078";
+                var wcode = "wc:JAXX0021";
+                var url = "http://weather.service.msn.com/data.aspx?src=vista&weadegreetype=C&culture=ja-JP&wealocations="
+                var weatherURL = url + wcode;
+
+
+                //今日の日付を表示する
+                var date = new Date();
+                var today = date.getFullYear() +"/" + (date.getMonth()+1) +"/" + date.getDate();
+                document.getElementById("nichiji").innerHTML += today;
+                console.log(weatherURL);
+    
+                $.ajax({
+                    url: weatherURL,
+                    type: 'GET',      //外部サイトにGET送信
+                    cache: false,     //キャッシュOFF
+
+                    success: function(res) {
+                        //console.dir(arguments);
+                        console.log("---1---");
+                        content = $(res.responseText).text();
+                        // 取得した内容をコンソールに出力
+                        console.log(content);
+                       var xmlDoc = $.parseXML(content);
+   
+                       console.log("---2---");
+			              console.log(xmlDoc);
+                       //alert("データを取得しました");
+                     
+                        //取得した内容(テキスト)をコンソールに出力
+                        var wd = $(xmlDoc).find('weatherdata');
+                        console.log(wd.html());
+                        
+ 			            //今回必要なのはこの部分           
+                        var wt = $(wd).find('weather');
+                        console.log(wt.html());
+                        
+                        //データの取得その１
+                        var wcode = $(wt).attr('weatherlocationcode');
+                        var wname = $(wt).attr('weatherlocationname');
+                        //wname = wname.split('，');
+                        console.log(wcode + "/" +wname);
+						
+                        
+						//取得データの設定
+                        $("#report").html("");
+                        $("#report").append("<b>場所コード:</b>" + wcode +"<br>");
+                        $("#report").append("<b>予報場所:</b>" +wname  +"<br>");
+
+                        //<current>の属性を取得 
+                        var skycode = $(wt).find('current').attr('skycode');
+                        var skytext = $(wt).find('current').attr('skytext');
+                        var picUrl = "Pic/" + skycode + ".png";
+                        
+                        var ondo = $(wt).find('current').attr('temperature');
+                        //alert(ondo+"度です");
+                        var taikan = $(wt).find('current').attr('feelslike');
+                        
+						
+						//お天気データに追記、画像表示
+                        $("#report").append( "<b>天気:</b>" + skytext  +"<br>" );
+                        $("#report").append( "<b>気温:</b>" + ondo  +"℃ / " );
+                        $("#report").append( "<b>体感温度:</b>" + taikan  +"℃<br>" );
+                        $("#tenkipic").attr("src",picUrl);
+						
+                        //週間天気予報の取得 
+                        $("#report2").html("");
+                        $("#report2").append("<B>明日以降のお天気は・・・</B><br>");
+                         
+                         var tbl ="<table border='1'>";
+                         //<weather>の下の<forecast>（複数）の１件ずつ処理
+                         $(wt).find('forecast').each(function(i){
+                            var day = $(this).attr('day');
+                            var skyTextDay = $(this).attr('skytextday');
+                            var skyCodeDay = $(this).attr('skycodeday');
+                            var picUrlDay = "Pic/" + skyCodeDay + ".png";   
+
+                            tbl += "<tr>";
+                            tbl += "<td>" + day + "</td>";
+                            tbl += "<td>" +skyTextDay +"</td>";
+                            tbl += "<td><img src='" +picUrlDay +"' width='50px' height='50px'></td>";
+                            tbl +=  "</tr>";
+                         });
+                         tbl += "</table>"; 
+                         console.log(tbl);                        
+                         $("#report2").append(tbl);
+                         
+                         //取得した生データ
+                         //$("#rawdata").text(wd.html());    
+                    },
+                    error: function(error) {
+                    	alert('エラーが発生しました');
+                    }
+                 });
+                 
+                 $('.slider').bxSlider( );
+                  
+                  
+                });
+	</script>
+
+</head>
+
+<body>
+	<div id="main">
+		<div class="slider">
+			<div id="slide01" style="width: 95vw; height:99vh;">
+				<h1>市川市のお天気</h1>
+				<div id="item1">
+					<div id="test1"></div>
+					<div id="nichiji">日時:</div><br>
+					<b>お天気データ</b>
+					<div id="report"></div>
+					<img id="tenkipic" src="">
+				</div>
+			</div>
+			<div id="slide02" style="width: 95vw; height:99vh;">
+				<h2>週間天気予報</h2>
+				<div id="item2">
+					<div id="report2"></div>
+				</div>
+			</div>
+			<div id="slide03" style="width: 95vw; height:99vh;">
+				<div id="item3">
+                  copyright <br>
+                  船橋情報ビジネス専門学校 <br>
+                   ニコニコお天気研究会
+				</div>
+			</div>
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+お天気コード一覧（日本）
+
+ロケーションコード横に　*　が付いている場所があります。
+その当日の天気が表示されませんでした（N/A）この場合、今日のお天気がN/A表示になります。
+MSN天気予報の仕様変更などで急に取得出来なくなる場合もあるかもしれません。
+
+コードはwc:JAXX0002 のような形式になります
+
+のっていない地域は以下のようにして調べることができます（日本語で検索できる国もあります）
+http://weather.service.msn.com/find.aspx?outputview=search&src=vista&weasearchstr="funabashi,jpn"
+http://weather.service.msn.com/find.aspx?outputview=search&src=vista&weasearchstr="funabashi,chiba,jpn"
+http://weather.service.msn.com/find.aspx?outputview=search&src=vista&weasearchstr="london,uk"
+
+
+北海道
+旭川　JAXX0002
+函館　JAXX0014
+千歳　JAXX0121
+江別　JAXX0008
+上磯　JAXX0029
+小樽　JAXX0072
+札幌　JAXX0078
+
+青森
+青森　JAXX0004
+八戸　JAXX0119
+三沢　JAXX0120
+
+秋田
+秋田　JAXX0001
+本庄　JAXX0020
+象潟　JAXX0037
+能代　JAXX0062
+
+岩手
+盛岡　JAXX0103
+
+山形
+酒田　JAXX0076
+鶴岡　JAXX0090
+
+宮城
+仙台　JAXX0104
+
+福島
+福島　JAXX0010
+
+栃木
+茂木　JAXX0113
+宇都宮　JAXX0094
+
+茨城
+銚子　JAXX0007
+日立　JAXX0019
+水戸　JAXX0053
+
+埼玉
+川口　JAXX0035
+大宮　JAXX0068
+埼玉　JAXX0117
+
+東京
+八王子　JAXX0013
+町田　JAXX0048
+南鳥島　JAXX0111*
+東京　JAXX0085
+
+千葉
+千葉　JAXX0006
+船橋　JAXX0011
+市川　JAXX0021
+松戸　JAXX0048
+成田　JAXX0118
+
+神奈川
+川崎　JAXX0036
+相模原　JAXX0074
+横浜　JAXX0099
+
+新潟
+上越　JAXX0026
+柏崎　JAXX0033
+新潟　JAXX0061
+三条　JAXX0077
+長岡　JAXX0054
+
+長野
+松本　JAXX0050
+長野　JAXX0105
+岡谷　JAXX0064
+上田　JAXX0092
+
+山梨
+甲府　JAXX0041
+
+静岡
+浜松　JAXX0116
+静岡　JAXX0107
+
+富山
+高岡　JAXX0082
+富山　JAXX0086
+
+岐阜
+岐阜　JAXX0012
+大垣　JAXX0063
+
+愛知
+姫路　JAXX0017
+一宮　JAXX0022
+苅谷　JAXX0032
+春日井　JAXX0034
+名古屋　JAXX0057
+岡崎　JAXX0066
+豊田　JAXX0088
+
+石川
+羽咋　JAXX0015
+金沢　JAXX0030
+小松　JAXX0042
+松任　JAXX0051*
+七尾　JAXX0059
+
+滋賀
+大津　JAXX0073
+
+三重
+鈴鹿　JAXX0112
+津　JAXX0089
+四日市　JAXX0098
+
+奈良
+奈良　JAXX0060
+
+京都
+京都　JAXX0047
+宇治　JAXX0093
+
+大阪
+尼崎　JAXX0003
+東大阪　JAXX0016
+和泉　JAXX0025
+岸和田　JAXX0038
+大阪　JAXX0071
+堺　JAXX0075
+高槻　JAXX0083
+豊中　JAXX0087
+八尾　JAXX0097
+
+和歌山
+和歌山　JAXX0095
+
+兵庫
+神戸　JAXX0040
+
+鳥取
+境港　JAXX0114
+鳥取　JAXX0122
+米子　JAXX0115
+
+岡山
+倉敷　JAXX0044
+岡山　JAXX0065
+
+広島
+広島　JAXX0018
+呉　JAXX0045
+
+山口
+岩国　JAXX0024
+下関　JAXX0080
+徳山　JAXX0084　(現：周南)
+宇部　JAXX0091
+山口　JAXX0096
+
+香川
+高松　JAXX0081
+
+愛媛
+松山　JAXX0052
+
+福岡
+福岡　JAXX0009
+飯塚　JAXX0023
+北九州　JAXX0039
+久留米　JAXX0046
+大牟田　JAXX0070
+行橋　JAXX0100
+
+宮崎
+宮崎　JAXX0110
+
+鹿児島
+阿久根　JAXX0002
+鹿児島　JAXX0028
+
+熊本
+熊本　JAXX0043
+
+佐賀
+唐津　JAXX0031
+
+長崎
+長崎　JAXX0055
+大村　JAXX0069
+佐世保　JAXX0079
+
+沖縄
+嘉手納空軍基地　JAXX0027
+名護　JAXX0056
+那覇　JAXX0058
+沖縄　JAXX0067
+
+
+
